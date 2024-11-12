@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 
-import { useGetTransactions } from "../api/use-get-transactions";
+import useFilteredTransactions from "../hooks/use-filtered-transactions";
 
 export const useGetBalance = () => {
   const {
-    data: transactions,
+    filteredData: transactions,
     isLoading,
     isError,
     error,
-  } = useGetTransactions();
+  } = useFilteredTransactions();
 
   const balance = useMemo<number>(() => {
     if (!transactions) return 0;

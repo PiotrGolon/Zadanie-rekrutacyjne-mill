@@ -1,35 +1,24 @@
-import React, { useState } from "react";
 import { Menu, MenuItem, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { generateTransactionPDF } from "../../../utils/pdf-utlis";
-import { Transaction } from "../types";
 
-interface ActionsMenuProps {
-  onToggle: () => void;
-  transaction: Transaction;
-}
+import ConfirmDeleteDialog from "./confirm-dialog";
 
-const ActionsMenu: React.FC<ActionsMenuProps> = ({ onToggle, transaction }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+import { ActionsMenuProps } from "../types";
+import useActionsMenu from "../hooks/use-actions-menu";
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleGeneratePDF = () => {
-    generateTransactionPDF(transaction);
-    handleClose();
-  };
-
-  const handleToggleAndClose = () => {
-    onToggle();
-    handleClose();
-  };
+const ActionsMenu = ({ onToggle, onDelete, transaction }: ActionsMenuProps) => {
+  const {
+    anchorEl,
+    open,
+    confirmOpen,
+    handleClick,
+    handleClose,
+    handleGeneratePDF,
+    handleToggleAndClose,
+    handleDeleteClick,
+    handleConfirmDelete,
+    handleCancelDelete,
+  } = useActionsMenu({ transaction, onToggle, onDelete });
 
   return (
     <>
@@ -49,10 +38,15 @@ const ActionsMenu: React.FC<ActionsMenuProps> = ({ onToggle, transaction }) => {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={handleToggleAndClose}>Detale</MenuItem>
-        {/* Możesz dodać inne opcje jak Edycja, Usunięcie */}
-        <MenuItem onClick={handleGeneratePDF}>Wygeneruj Potwierdzenie</MenuItem>
+        <MenuItem onClick={handleToggleAndClose}>Details</MenuItem>
+        <MenuItem onClick={handleGeneratePDF}>Generate Confirmation</MenuItem>
+        <MenuItem onClick={handleDeleteClick}>Delete</MenuItem>
       </Menu>
+      <ConfirmDeleteDialog
+        open={confirmOpen}
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </>
   );
 };
