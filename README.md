@@ -12,6 +12,7 @@ This project is an application set up as a monorepo, containing both frontend an
 ## Features
 
 ### Frontend Application
+
 This is a simple banking application that reflects core banking operations:
 
 - **Transaction Form**: Built with React Hook Form and validated using Zod, with fields for amount, account number, address, description, and beneficiary.
@@ -23,7 +24,9 @@ This is a simple banking application that reflects core banking operations:
 ## Getting Started
 
 ### Prerequisites
+
 Ensure you have the following tools installed on your machine:
+
 - **Node.js** (version >= 16)
 - **npm** or **Yarn**
 
@@ -32,8 +35,8 @@ Ensure you have the following tools installed on your machine:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/fullstack-monorepo.git
-   cd fullstack-monorepo
+   git clone https://github.com/PiotrGolon/Zadanie-rekrutacyjne-mill.git
+
    ```
 
 2. Install dependencies for all packages:
@@ -53,10 +56,13 @@ Ensure you have the following tools installed on your machine:
 ### Development Mode
 
 - **Frontend**:
+
   ```sh
   npm run dev
   ```
+
   or
+
   ```sh
   yarn dev
   ```
@@ -78,6 +84,7 @@ This will run both the frontend (on Vite's default port 5173) and the backend se
 zadanie-rekrutacyjne-mill/
 ├── client/        # React/TS frontend
 ├── server/        # Node.js backend
+├── .gitignore
 ├── design.png
 └── README.md
 ```
@@ -93,6 +100,7 @@ zadanie-rekrutacyjne-mill/
 ## Testing
 
 ### Unit and Integration Tests
+
 The project uses Vitest and Testing Library for unit and integration tests. To run all tests:
 
 ```sh
@@ -100,6 +108,7 @@ npm run test
 ```
 
 ### Cypress E2E Tests
+
 To run end-to-end tests for the frontend:
 
 ```sh
@@ -133,6 +142,7 @@ This command will open the Cypress Test Runner where you can execute the E2E tes
 5. Open a Pull Request.
 
 ## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
